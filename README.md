@@ -151,3 +151,149 @@ Returns the current user's information
     "user_type": "customer"
 }
 ```
+
+### GET /cart
+
+Returns the current user's cart information
+
+#### Response
+
+- **Content-Type**: application/json
+- **HTTP Status Code**: 200
+- **Response Body**:
+```json
+{
+    "total_price": 000, 
+    "total_items": 3, 
+    "items": [
+        {
+            "id": "5e9f8f8f-f9d3-4f2b-b8f8-f8f8f8f8f8f8",
+            "name": "Example Item",
+            "price": 100,
+            "quantity": 1
+        },
+        {
+            "id": "5e9f8f8f-f9d3-4f2b-b8f8-f8f8f8f8f8f8",
+            "name": "Example Item",
+            "price": 100,
+            "quantity": 1
+        },
+        {
+            "id": "5e9f8f8f-f9d3-4f2b-b8f8-f8f8f8f8f8f8",
+            "name": "Example Item",
+            "price": 100,
+            "quantity": 1
+        }
+    ]
+}
+```
+
+### POST /cart
+
+Adds/Modifies an item on the current user's cart. If the item is already in the cart, the quantity will be updated. If the item is not in the cart, it will be added to the cart.
+
+#### Request
+
+- **Content-Type**: application/json
+- **Request Body**:
+```json
+{
+    "product": "product_id",
+    "quantity": 5,
+}
+```
+
+#### Response
+
+If the item was added successfully:
+
+- **Content-Type**: application/json
+- **HTTP Status Code**: 200
+- **Response Body**:
+```json
+{
+    "total_price": 000, 
+    "total_items": 3, 
+    "items": [
+        {
+            "id": "5e9f8f8f-f9d3-4f2b-b8f8-f8f8f8f8f8f8",
+            "name": "Example Item",
+            "price": 100,
+            "quantity": 1
+        },
+        {
+            "id": "5e9f8f8f-f9d3-4f2b-b8f8-f8f8f8f8f8f8",
+            "name": "Example Item",
+            "price": 100,
+            "quantity": 1
+        },
+        {
+            "id": "5e9f8f8f-f9d3-4f2b-b8f8-f8f8f8f8f8f8",
+            "name": "Example Item",
+            "price": 100,
+            "quantity": 1
+        }
+    ]
+}
+```
+If the cart item wasn't added successfully:
+
+- **Content-Type**: application/json
+- **HTTP Status Code**: 400
+- **Response Body**:
+```json
+{
+  "error": "Error Description",
+}
+```
+### DELETE /cart
+
+Deletes an item on the current user's cart. Calling this endpoint has the same effect as calling `POST /cart` with a quantity of 0.
+
+#### Request
+
+- **Content-Type**: application/json
+- **Request Body**:
+```json
+{
+    "product": "product_id",
+}
+```
+
+#### Response
+
+If the item was deleted successfully:
+
+- **Content-Type**: application/json
+- **HTTP Status Code**: 200
+- **Response Body**:
+```json
+{
+    "total_price": 000, 
+    "total_items": 2, 
+    "items": [
+        {
+            "id": "5e9f8f8f-f9d3-4f2b-b8f8-f8f8f8f8f8f8",
+            "name": "Example Item",
+            "price": 100,
+            "quantity": 1
+        },
+        {
+            "id": "5e9f8f8f-f9d3-4f2b-b8f8-f8f8f8f8f8f8",
+            "name": "Example Item",
+            "price": 100,
+            "quantity": 1
+        },
+    ]
+}
+```
+If the cart item wasn't added successfully:
+
+- **Content-Type**: application/json
+- **HTTP Status Code**: 400
+- **Response Body**:
+```json
+{
+  "error": "Error Description",
+}
+```
