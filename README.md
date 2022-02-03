@@ -297,3 +297,93 @@ If the cart item wasn't added successfully:
   "error": "Error Description",
 }
 ```
+### GET /purchases
+
+Gets a paginated list of purchases made by the current user.
+
+#### Request
+
+- **Query Parameters**:
+    - page: Current page of the list. Default is 1.
+    - limit: Number of items per page. Default is 10.
+    - offset: Number of items to skip. Default is 0.
+
+#### Response
+
+- **Content-Type**: application/json
+- **HTTP Status Code**: 200
+- **Response Body**:
+```json
+{
+    "count": 1,
+    "next": "Example URL",
+    "previous": "Example URL",
+    "results": [   
+        {
+            "purchase_date": "03/12/2019", 
+            "state": "pending" || "completed", 
+            "product_total": 100,
+            "shipping_total": 50,
+            "items": [
+                {
+                    "id": "5e9f8f8f-f9d3-4f2b-b8f8-f8f8f8f8f8f8",
+                    "name": "Example Item",
+                    "price": 100,
+                    "quantity": 1
+                },
+                {
+                    "id": "5e9f8f8f-f9d3-4f2b-b8f8-f8f8f8f8f8f8",
+                    "name": "Example Item",
+                    "price": 100,
+                    "quantity": 1
+                },
+            ]
+        }
+    ]
+}
+```
+
+### POST /purchases
+
+Creates a purchase using the current user's cart.
+
+#### Response
+
+If the purchase was successful:
+
+- **Content-Type**: application/json
+- **HTTP Status Code**: 200
+- **Response Body**:
+```json
+{
+  "purchase_date": "03/12/2019", 
+  "state": "pending" || "completed", 
+  "product_total": 100,
+  "shipping_total": 50,
+  "items": [
+      {
+          "id": "5e9f8f8f-f9d3-4f2b-b8f8-f8f8f8f8f8f8",
+          "name": "Example Item",
+          "price": 100,
+          "quantity": 1
+      },
+      {
+          "id": "5e9f8f8f-f9d3-4f2b-b8f8-f8f8f8f8f8f8",
+          "name": "Example Item",
+          "price": 100,
+          "quantity": 1
+      },
+  ]
+}
+```
+
+If the purchase wasn't successful:
+
+- **Content-Type**: application/json
+- **HTTP Status Code**: 400
+- **Response Body**:
+```json
+{
+  "error": "Error Description",
+}
+```
