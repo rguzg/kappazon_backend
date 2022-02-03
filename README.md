@@ -82,7 +82,72 @@ If a valid refresh token was provided:
 If an invalid password was provided:
 - **HTTP Status Code**: 403
 
+### POST /user
+
+Creates a new customer user.
+
+#### Request
+
+- **Content-Type**: application/json
+- **Request Body**:
+```json
+{
+    "email": "john.doe@email.com",
+    "password": "pas$w0rd",
+    "first_name": "John",
+    "last_name": "Doe", 
+    "birthdate": "03/12/2019",
+    "gender": "male",
+    "user_type": "customer"
+}
+```
+
+#### Response
+
+If the user was created successfully:
+
+- **Content-Type**: application/json
+- **HTTP Status Code**: 200
+- **Response Body**:
+```json
+{
+  "access": "<JWT_TOKEN>",
+  "refresh": "<JWT_REFRESH_TOKEN>" 
+}
+```
+
+If the user wasn't created successfully:
+
+- **Content-Type**: application/json
+- **HTTP Status Code**: 400
+- **Response Body**:
+```json
+{
+  "error": "Error Description",
+}
+```
+
 ## Auth Endpoints
 
 Endpoints that require authentication must send a valid JWT token in the `Authorization` header using the following format:
 `Authorization: Bearer <JWT_TOKEN>`. If the token is invalid, or the token doesn't provide sufficient permissions the request will be rejected with an 403 status code.
+
+### GET /user
+
+Returns the current user's information
+
+#### Response
+
+- **Content-Type**: application/json
+- **HTTP Status Code**: 200
+- **Response Body**:
+```json
+{
+    "first_name": "John",
+    "last_name": "Doe", 
+    "birthdate": "03/12/2019",
+    "email": "john.doe@email.com",
+    "gender": "male",
+    "user_type": "customer"
+}
+```
