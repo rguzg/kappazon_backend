@@ -1,11 +1,9 @@
 # Kappazon Backend
 Kappazon is the world's newest online marketplace!
 
-## Endpoints
 This repository is for Kappazon's backend. This backend exposes the following endpoints:
 
-Endpoints that require authentication must send a valid JWT token in the `Authorization` header using the following format:
-`Authorization: Bearer <JWT_TOKEN>` 
+## No Auth Endpoints
 
 ### POST /api/token
 
@@ -83,3 +81,8 @@ If a valid refresh token was provided:
 
 If an invalid password was provided:
 - **HTTP Status Code**: 403
+
+## Auth Endpoints
+
+Endpoints that require authentication must send a valid JWT token in the `Authorization` header using the following format:
+`Authorization: Bearer <JWT_TOKEN>`. If the token is invalid, or the token doesn't provide sufficient permissions the request will be rejected with an 403 status code.
