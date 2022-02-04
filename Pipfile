@@ -1,0 +1,17 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+autopep8 = "*"
+
+[scripts]
+start = "python manage.py runserver"
+
+[packages]
+django = "*"
+python-dotenv = "*"
+
+[requires]
+python_version = "3.9"
