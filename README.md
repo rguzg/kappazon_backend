@@ -387,3 +387,179 @@ If the purchase wasn't successful:
   "error": "Error Description",
 }
 ```
+
+### GET /products
+
+Gets a paginated list of existing products.
+
+#### Request
+
+- **Query Parameters**:
+    - page: Current page of the list. Default is 1.
+    - limit: Number of items per page. Default is 10.
+    - offset: Number of items to skip. Default is 0.
+    - show_nostock: If set to true, will include products that are out of stock. Default is false.
+    - show_archived: If set to true, will include products that are archived. Default is false.
+
+#### Response
+
+- **Content-Type**: application/json
+- **HTTP Status Code**: 200
+- **Response Body**:
+```json
+{
+    "count": 1,
+    "next": "Example URL",
+    "previous": "Example URL",
+    "results": [   
+        {
+            "id": "5e9f8f8f-f9d3-4f2b-b8f8-f8f8f8f8f8f8",
+            "name": "Example Item",
+            "description": "Description",
+            "price": 100,
+            "inventory": 1,
+            "image_url": "Example URL",
+            "archived": false,
+            "last_modified_date": "03/12/2019",
+            "last_modified_by": "Example User"
+        },
+        {
+            "id": "5e9f8f8f-f9d3-4f2b-b8f8-f8f8f8f8f8f8",
+            "name": "Example Item",
+            "description": "Description",
+            "price": 100,
+            "inventory": 1,
+            "image_url": "Example URL",
+            "archived": true,
+            "last_modified_date": "03/12/2019",
+            "last_modified_by": "Example User"
+        },
+    ]
+}
+```
+
+### GET /products/{product_id}
+
+Gets details of an existing product.
+
+#### Response
+
+- **Content-Type**: application/json
+- **HTTP Status Code**: 200
+- **Response Body**:
+```json
+{
+    "id": "5e9f8f8f-f9d3-4f2b-b8f8-f8f8f8f8f8f8",
+    "name": "Example Item",
+    "description": "Description",
+    "price": 100,
+    "inventory": 1,
+    "image_url": "Example URL",
+    "archived": true,
+    "last_modified_date": "03/12/2019",
+    "last_modified_by": "Example User"
+}
+
+```
+
+### POST /products
+
+Creates or modifies a product. If the product already exists, the given fields in the request body will be updated. If no product id is provided, a new product will be created. 
+
+This endpoint can only be used by admin users.
+
+#### Request
+
+- **Content-Type**: application/json
+- **Request Body**:
+```json
+{
+    "id": "5e9f8f8f-f9d3-4f2b-b8f8-f8f8f8f8f8f8",
+    "name": "Example Item",
+    "description": "Description",
+    "price": 100,
+    "inventory": 1,
+    "image_url": "Example URL",
+    "archived": true,
+}
+
+```
+
+#### Response
+
+If the product was added successfully:
+
+- **Content-Type**: application/json
+- **HTTP Status Code**: 200
+- **Response Body**:
+```json
+{
+    "id": "5e9f8f8f-f9d3-4f2b-b8f8-f8f8f8f8f8f8",
+    "name": "Example Item",
+    "description": "Description",
+    "price": 100,
+    "inventory": 1,
+    "image_url": "Example URL",
+    "archived": true,
+    "last_modified_date": "03/12/2019",
+    "last_modified_by": "Example User"
+}
+```
+
+If the item wasn't added:
+
+- **Content-Type**: application/json
+- **HTTP Status Code**: 400
+- **Response Body**:
+```json
+{
+  "error": "Error Description",
+}
+```
+
+### DELETE /products
+
+Archives a product. This endpoint can only be used by admin users.
+
+#### Request
+
+- **Content-Type**: application/json
+- **Request Body**:
+```json
+{
+    "id": "5e9f8f8f-f9d3-4f2b-b8f8-f8f8f8f8f8f8",
+}
+
+```
+
+#### Response
+
+If the product was archived successfully:
+
+- **Content-Type**: application/json
+- **HTTP Status Code**: 200
+- **Response Body**:
+```json
+{
+    "id": "5e9f8f8f-f9d3-4f2b-b8f8-f8f8f8f8f8f8",
+    "name": "Example Item",
+    "description": "Description",
+    "price": 100,
+    "inventory": 1,
+    "image_url": "Example URL",
+    "archived": true,
+    "last_modified_date": "03/12/2019",
+    "last_modified_by": "Example User"
+}
+```
+
+If the item wasn't archived:
+
+- **Content-Type**: application/json
+- **HTTP Status Code**: 400
+- **Response Body**:
+```json
+{
+    "error": "Error Description",
+}
+```
