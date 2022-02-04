@@ -13,6 +13,7 @@ start = "python manage.py runserver"
 django = "*"
 python-dotenv = "*"
 djangorestframework-simplejwt = "*"
+djangorestframework = "*"
 
 [requires]
 python_version = "3.9"
