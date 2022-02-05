@@ -82,7 +82,7 @@ If a valid refresh token was provided:
 If an invalid password was provided:
 - **HTTP Status Code**: 403
 
-### POST /users/customer
+### POST /users/create_customer
 
 Creates a new customer user.
 
