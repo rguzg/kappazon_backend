@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'apps.authentication'
+    'apps.users'
 ]
 
 MIDDLEWARE = [
@@ -133,4 +133,4 @@ REST_FRAMEWORK = {
 }
 
 # Custom User Model
-AUTH_USER_MODEL = 'authentication.User'
+AUTH_USER_MODEL = 'users.User'
