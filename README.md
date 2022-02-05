@@ -111,8 +111,13 @@ If the user was created successfully:
 - **Response Body**:
 ```json
 {
-  "access": "<JWT_TOKEN>",
-  "refresh": "<JWT_REFRESH_TOKEN>" 
+    "email": "john.doe@email.com",
+    "password": "pas$w0rd",
+    "first_name": "John",
+    "last_name": "Doe", 
+    "birthdate": "03/12/2019",
+    "gender": "male",
+    "image_url": "Example URL"
 }
 ```
 
