@@ -133,4 +133,4 @@ REST_FRAMEWORK = {
 }
 
 # Custom User Model
-AUTH_USER_MODEL = 'auth.User'
+AUTH_USER_MODEL = 'authentication.User'
