@@ -98,6 +98,7 @@ Creates a new customer user.
     "last_name": "Doe", 
     "birthdate": "03/12/2019",
     "gender": "male",
+    "image_url": "Example URL"
 }
 ```
 
