@@ -22,7 +22,7 @@ The returned tokens have the following claims:
 - **Request Body**:
 ```json
 {
-  "email": "john_doe@mail.com",
+  "username": "john_doe@mail.com",
   "password": "pas$w0rd"
 }
 ```
