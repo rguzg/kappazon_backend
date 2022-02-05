@@ -14,7 +14,7 @@ The access token will expire after an hour. To get a new token, call [`/api/toke
 The returned tokens have the following claims:
 - User's full name
 - User's user type
-- User's current cart
+- User's image URL
 
 #### Request
 
@@ -42,7 +42,7 @@ If a valid username and password was provided:
 ```
 
 If an invalid username or password was provided:
-- **HTTP Status Code**: 403
+- **HTTP Status Code**: 400 or 401
 
 ### POST /api/token/refresh
 
@@ -53,7 +53,7 @@ The access token will expire after an hour. To get a new token, call this endpoi
 The returned token has the following claims:
 - User's full name
 - User's user type
-- User's current cart
+- User's image URL
 
 #### Request
 
@@ -80,7 +80,7 @@ If a valid refresh token was provided:
 ```
 
 If an invalid password was provided:
-- **HTTP Status Code**: 403
+- **HTTP Status Code**: 400 or 401
 
 ### POST /users/create_customer
 
