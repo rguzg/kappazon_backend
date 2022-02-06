@@ -157,6 +157,55 @@ Returns the current user's information
 }
 ```
 
+## POST /user
+
+Modifies the current user's information. For changing the password, use /user/change_password.
+
+#### Request
+
+- **Content-Type**: application/json
+- **Request Body**:
+```json
+{
+    "first_name": "John",
+    "last_name": "Doe", 
+    "birthdate": "03/12/2019",
+    "gender": "male",
+    "image_url": "Example URL"
+}
+```
+
+#### Response
+
+If the user was modified successfully:
+
+- **Content-Type**: application/json
+- **HTTP Status Code**: 200
+- **Response Body**:
+```json
+{
+    "email": "john.doe@email.com",
+    "password": "pas$w0rd",
+    "first_name": "John",
+    "last_name": "Doe", 
+    "birthdate": "03/12/2019",
+    "gender": "male",
+    "image_url": "Example URL",
+    "user_type": "Customer"
+}
+```
+
+If the user wasn't modified successfully:
+
+- **Content-Type**: application/json
+- **HTTP Status Code**: 400
+- **Response Body**:
+```json
+{
+  "error": "Error Description",
+}
+```
+
 ### GET /cart
 
 Returns the current user's cart information
