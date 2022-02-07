@@ -20,10 +20,12 @@ from rest_framework_simplejwt.views import TokenRefreshView
 from rest_framework import routers
 from apps.users.viewsets import UsersViewSet
 from apps.user.viewsets import UserViewSet
+from apps.products.viewsets import ProductViewSet
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register('users', UsersViewSet, 'users')
 router.register('user', UserViewSet, 'user')
+router.register('products', ProductViewSet, 'products')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
