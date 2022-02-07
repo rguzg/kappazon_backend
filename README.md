@@ -451,7 +451,6 @@ Gets a paginated list of existing products.
 - **Query Parameters**:
     - page: Current page of the list. Default is 1.
     - limit: Number of items per page. Default is 10.
-    - offset: Number of items to skip. Default is 0.
     - show_nostock: If set to true, will include products that are out of stock. Default is false.
     - show_archived: If set to true, will include products that are archived. Default is false.
 
@@ -518,9 +517,7 @@ Gets details of an existing product.
 
 ### POST /products
 
-Creates or modifies a product. If the product already exists, the given fields in the request body will be updated. If no product id is provided, a new product will be created. 
-
-This endpoint can only be used by admin users.
+Creates a product. This endpoint can only be used by admin users.
 
 #### Request
 
@@ -528,7 +525,26 @@ This endpoint can only be used by admin users.
 - **Request Body**:
 ```json
 {
-    "id": "5e9f8f8f-f9d3-4f2b-b8f8-f8f8f8f8f8f8",
+    "name": "Example Item",
+    "description": "Description",
+    "price": 100,
+    "inventory": 1,
+    "image_url": "Example URL",
+    "archived": true,
+}
+
+```
+
+### PATCH /products/{product_id}
+
+Modifies a product. This endpoint can only be used by admin users.
+
+#### Request
+
+- **Content-Type**: application/json
+- **Request Body**:
+```json
+{
     "name": "Example Item",
     "description": "Description",
     "price": 100,
@@ -541,7 +557,7 @@ This endpoint can only be used by admin users.
 
 #### Response
 
-If the product was added successfully:
+If the product was updated successfully:
 
 - **Content-Type**: application/json
 - **HTTP Status Code**: 200
@@ -560,10 +576,10 @@ If the product was added successfully:
 }
 ```
 
-If the item wasn't added:
+If the item wasn't updated:
 
 - **Content-Type**: application/json
-- **HTTP Status Code**: 400
+- **HTTP Status Code**: 400 or 404
 - **Response Body**:
 ```json
 {
@@ -571,20 +587,9 @@ If the item wasn't added:
 }
 ```
 
-### DELETE /products
+### DELETE /products/{product_id}
 
 Archives a product. This endpoint can only be used by admin users.
-
-#### Request
-
-- **Content-Type**: application/json
-- **Request Body**:
-```json
-{
-    "id": "5e9f8f8f-f9d3-4f2b-b8f8-f8f8f8f8f8f8",
-}
-
-```
 
 #### Response
 
@@ -601,7 +606,7 @@ If the product was archived successfully:
     "price": 100,
     "inventory": 1,
     "image_url": "Example URL",
-    "archived": true,
+    "is_archived": true,
     "last_modified_date": "03/12/2019",
     "last_modified_by": "Example User"
 }
@@ -610,7 +615,7 @@ If the product was archived successfully:
 If the item wasn't archived:
 
 - **Content-Type**: application/json
-- **HTTP Status Code**: 400
+- **HTTP Status Code**: 400 or 404
 - **Response Body**:
 ```json
 {
