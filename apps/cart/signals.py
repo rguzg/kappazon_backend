@@ -5,6 +5,6 @@ from .models import Cart
 
 
 @receiver(post_save, sender=get_user_model())
-def create_user_cart(sender, **kwargs):
+def user_added(sender, **kwargs):
     if kwargs['created']:
         Cart(user=kwargs['instance']).save()
