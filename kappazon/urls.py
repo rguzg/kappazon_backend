@@ -22,12 +22,14 @@ from apps.users.viewsets import UsersViewSet
 from apps.user.viewsets import UserViewSet
 from apps.products.viewsets import ProductViewSet
 from apps.cart.viewsets import CartViewSet
+from apps.purchases.viewsets import PurchaseViewSet
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register('users', UsersViewSet, 'users')
 router.register('user', UserViewSet, 'user')
 router.register('products', ProductViewSet, 'products')
 router.register('cart', CartViewSet, 'cart')
+router.register('purchases', PurchaseViewSet, 'purchases')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
