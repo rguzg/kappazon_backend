@@ -293,26 +293,16 @@ If the item was added successfully:
 If the cart item wasn't added successfully:
 
 - **Content-Type**: application/json
-- **HTTP Status Code**: 400
+- **HTTP Status Code**: 400 or 404
 - **Response Body**:
 ```json
 {
   "error": "Error Description",
 }
 ```
-### DELETE /cart
+### DELETE /cart/{product_id}
 
 Deletes an item on the current user's cart. Calling this endpoint has the same effect as calling `POST /cart` with a quantity of 0.
-
-#### Request
-
-- **Content-Type**: application/json
-- **Request Body**:
-```json
-{
-    "product": "product_id",
-}
-```
 
 #### Response
 
@@ -344,7 +334,7 @@ If the item was deleted successfully:
 If the cart item wasn't added successfully:
 
 - **Content-Type**: application/json
-- **HTTP Status Code**: 400
+- **HTTP Status Code**: 400 or 404
 - **Response Body**:
 ```json
 {
