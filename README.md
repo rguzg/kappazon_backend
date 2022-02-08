@@ -350,7 +350,6 @@ Gets a paginated list of purchases made by the current user.
 - **Query Parameters**:
     - page: Current page of the list. Default is 1.
     - limit: Number of items per page. Default is 10.
-    - offset: Number of items to skip. Default is 0.
 
 #### Response
 
