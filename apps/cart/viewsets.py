@@ -37,18 +37,18 @@ class CartViewSet(viewsets.ModelViewSet):
         try:
             product = Product.objects.get(pk=request.data['product'])
 
+            if(product.is_archived):
+                return Response(data={"message": "Product is archived"}, status=400)
+
+            if(product.inventory < request.data['quantity']):
+                return Response(data={"message": "Not enough inventory"}, status=400)
+
             cart_item, _ = CartItem.objects.get_or_create(
                 cart=cart, product=product, defaults={"cart": cart, "product": product})
 
             if(request.data['quantity'] == 0):
                 cart_item.delete()
             else:
-                if(product.is_archived):
-                    return Response(data={"message": "Product is archived"}, status=400)
-
-                if(product.inventory < request.data['quantity']):
-                    return Response(data={"message": "Not enough inventory"}, status=400)
-
                 cart_item.quantity = request.data['quantity']
                 cart_item.save()
         except:
