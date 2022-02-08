@@ -57,6 +57,8 @@ class CartViewSet(viewsets.ModelViewSet):
         cart.total_price += product.price * request.data['quantity']
         cart.total_items += request.data['quantity']
 
+        cart.save()
+
         return Response(data=CartSerializer(cart).data, status=200)
 
     def list(self, request):
